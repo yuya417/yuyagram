@@ -28,6 +28,7 @@ gem 'annotate'
 gem 'devise'
 gem 'hamlit'
 gem 'font-awesome-sass'
+gem 'sidekiq'
 
 
 # Reduces boot times through caching; required in config/boot.rb

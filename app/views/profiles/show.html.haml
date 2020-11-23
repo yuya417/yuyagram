@@ -3,5 +3,6 @@
     = icon("fas", "arrow-left fa-2x")
     .account-name
       %p= @account
-    .profile-img
-      = image_tag 'Ellipse.png'
+    = form_with(model: @profile , local: true ) do |f|
+      .profile-img
+        = f.file_field :image

@@ -1,0 +1,57 @@
+.devise {
+  img {
+    width: 100%;
+  }
+
+  form {
+    margin: 33px 16px;
+    width: 90%;
+
+    input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #9E9E9E;
+      outline: 0;
+      padding-bottom: 10px;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      color: #333333;
+    }
+
+    label {
+      font-size: 11px;
+      line-height: 16.5px;
+      font-weight: 500;
+      color: #979797;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .forgotten-password {
+      text-align: right;
+      a {
+        font-size: 11px;
+        line-height: 16px;
+        color: #CCCCCC;
+      }
+    }
+
+    .actions {
+      margin-top: 90px;
+      input {
+        background: #FFE600;
+        border: none;
+        padding-top: 14px;
+        padding-bottom: 13px;
+        font-size: 14px;
+        line-height: 21px;
+        color: #000000;
+        font-weight: 500;
+      }
+    }
+
+  }
+}

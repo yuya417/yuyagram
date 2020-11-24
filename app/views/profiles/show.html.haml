@@ -4,7 +4,11 @@
     .account-name
       %p= @account
     .profile-img
-      = image_tag @profile.image
+      - if @profile.image.attached?
+        = image_tag @profile.image
+      - else 
+        = image_tag 'Ellipse.png'
       = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
         = f.file_field :image
         = f.submit '保存'
+    

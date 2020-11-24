@@ -27,6 +27,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'annotate'
 gem 'devise'
 gem 'hamlit'
+gem 'font-awesome-sass'
+gem 'sidekiq'
+gem 'carrierwave'
 
 
 # Reduces boot times through caching; required in config/boot.rb

@@ -1,0 +1,48 @@
+.card {
+  margin-top: 46px;
+  margin-bottom: 56px;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+  .card-account {
+    margin-bottom: 18px;
+    display: flex;
+    .card-account-icon {
+      margin-right: 8px;
+      img {
+        margin-top: 5px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+    }
+    .card-account-info {
+      .card-account-info-name {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        color: #333333;
+      }
+      .card-account-info-posttime {
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 18px;
+        color: #9E9E9E;
+      }
+    }
+  }
+  .article {
+    .article-images {
+      text-align: center;
+      img {
+        width: 100%;
+        margin-bottom: 13px;
+      }
+    }
+    .article-content {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 18px;
+      color: #333333;
+    }
+  }
+}

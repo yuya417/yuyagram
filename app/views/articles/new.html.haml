@@ -1,0 +1,10 @@
+.container
+  .article-new
+    = form_with(model: @article, url: articles_path, method: 'post', local:true ) do |f|
+      %div
+        = f.text_area :content
+      %div
+        = f.file_field :images
+      = f.submit 'Post'
+        
+

@@ -1,0 +1,22 @@
+= link_to 'プロフィール', profile_path
+= link_to 'Articles New', new_article_path
+%br
+
+- @articles.each do |article|
+  .card
+    .card-account
+      .card-account-icon
+        = image_tag @profile.image
+      .card-account-info
+        .card-account-info-name
+          = @account
+        .card-account-info-posttime
+          = time_ago_in_words(article.created_at)
+    .article
+      .article-images
+        - if article.images.attached?
+          - article.images.each do |image|
+            = image_tag image
+      .article-content
+        = article.content
+

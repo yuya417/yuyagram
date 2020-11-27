@@ -1,10 +1,9 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:index, :new, :create]
 
   def index
     @articles = Article.all.order("id DESC")
-    @profile = current_user.profile
-    @account = current_user.account_name
+
   end
   
   def new
@@ -13,12 +12,12 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.build(article_params)
+    @article.profile_id = current_user.id
     @profile = current_user.profile
-    @article.profile_id = @profile.id
+    @article.profile = @profile
     if @article.save!
       redirect_to root_path, notice: '保存しました！'
     else
-    
       flash.now[:error] = '保存できませんでした'
       render :new
     end
@@ -27,7 +26,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:content, :images)
+    params.require(:article).permit(:content, images: [])
   end
 
 end

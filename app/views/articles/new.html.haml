@@ -4,7 +4,7 @@
       %div
         = f.text_area :content
       %div
-        = f.file_field :images
+        = f.file_field :images, multiple: true
       = f.submit 'Post'
         
 

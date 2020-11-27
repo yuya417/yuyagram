@@ -6,10 +6,11 @@
   .card
     .card-account
       .card-account-icon
-        = image_tag @profile.image
+        - if article.author_img.attached?
+          = image_tag article.author_img
       .card-account-info
         .card-account-info-name
-          = @account
+          = article.author_name
         .card-account-info-posttime
           = time_ago_in_words(article.created_at)
     .article
@@ -17,6 +18,7 @@
         - if article.images.attached?
           - article.images.each do |image|
             = image_tag image
+            %br
       .article-content
         = article.content
 

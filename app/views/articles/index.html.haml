@@ -18,7 +18,12 @@
         - if article.images.attached?
           - article.images.each do |image|
             = image_tag image
-            %br
+      .article-btn
+        = image_tag 'like.png'
+        = image_tag 'comment.png'
+        %a{"data-show-count" => "false", :href => "https://twitter.com/share?ref_src=twsrc%5Etfw"}
+          = image_tag 'share.png'
+        %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
       .article-content
         = article.content
 

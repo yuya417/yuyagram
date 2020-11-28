@@ -2,13 +2,14 @@
   .profile 
     = icon("fas", "arrow-left fa-2x")
     .account-name
-      %p= @account
+      %p= @user.account_name
     .profile-img
-      - if @profile.image.attached?
+      - if @profile&.image.present?
         = image_tag @profile.image
       - else 
         = image_tag 'Ellipse.png'
       = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
         = f.file_field :image
         = f.submit '保存'
+  = link_to 'LOGOUT', destroy_user_session_path, data: {method: 'delete'}
     

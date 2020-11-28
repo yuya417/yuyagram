@@ -1,0 +1,29 @@
+= link_to 'プロフィール', profile_path
+= link_to 'Articles New', new_article_path
+%br
+
+- @articles.each do |article|
+  .card
+    .card-account
+      .card-account-icon
+        - if article.author_img.attached?
+          = image_tag article.author_img
+      .card-account-info
+        .card-account-info-name
+          = article.author_name
+        .card-account-info-posttime
+          = time_ago_in_words(article.created_at)
+    .article
+      .article-images
+        - if article.images.attached?
+          - article.images.each do |image|
+            = image_tag image
+      .article-btn
+        = image_tag 'like.png'
+        = image_tag 'comment.png'
+        %a{"data-show-count" => "false", :href => "https://twitter.com/share?ref_src=twsrc%5Etfw"}
+          = image_tag 'share.png'
+        %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
+      .article-content
+        = article.content
+

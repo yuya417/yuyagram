@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @account = current_user.account_name
+    @user = current_user
     @profile = current_user.profile
   end
 
@@ -10,7 +10,9 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @profile = current_user.build_profile(profile_params)
+    @profile = current_user.profile || current_user.build_profile
+    @profile.id = current_user.id
+    @profile.assign_attributes(profile_params)
     if @profile.save
       redirect_to profile_path, notice: 'プロフィール更新！'
     else

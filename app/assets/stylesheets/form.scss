@@ -1,0 +1,87 @@
+.article-new {
+  margin-top: 46px;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+
+  .article-new-header {
+    display: flex;
+    justify-content: space-around;
+
+    .article-new-header-cancel {
+      a {
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #2F80ED;
+      }
+    }
+    .article-new-header-title {
+      p {
+        margin: 0;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #333A42;
+      }
+    }
+    .article-new-header-post {
+      input {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #BDBDBD;
+        border: none;
+        background: none;
+      }
+    }
+  }
+  .article-new-account {
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    .article-new-account-img {
+      margin-right: 18px;
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
+    .article-new-account-name {
+      margin-top: 6px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: #333333;
+    }
+  }
+  .article-new-account-content {
+    textarea {
+      border: none;
+      width: 95%;
+      margin-right: 2.5%;
+      margin-left: 2.5%;
+      outline: none;
+      font-size: 16px;
+      line-height: 24px;
+      padding: 0;
+      border-bottom: solid 1px #9E9E9E;
+      vertical-align: bottom;
+    }
+  }
+  .article-new-account-images {
+    margin-top: 27px;
+    .article-new-account-images-label {
+      width: 73px;
+      height: 24px;
+      border: 1px solid #E0E0E0;
+      padding: 5px;
+      margin-left: 12px;
+    }
+    .article-new-account-images-form {
+      display: none;
+    }
+  }
+
+}

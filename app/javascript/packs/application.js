@@ -20,12 +20,17 @@ import axios from 'axios'
 import $ from 'jquery'
 
 document.addEventListener('DOMContentLoaded', () => {
-  $('.article-new-account-img').on('click', () => {
-    axios.get('/')
-      .then((response) => {
-        console.log(response)
-      })
-  })
+  const dataset = $('#article-show').data()
+  const articleId = dataset.articleId
+  axios.get(`/articles/${articleId}/like`)
+    .then((response) => {
+      const hasLiked = response.data.hasLiked
+      if (hasLiked) {
+        $('.active-heart').removeClass('hidden')
+      } else {
+        $('.inactive-heart').removeClass('hidden')
+      }
+    })
 })
 
 

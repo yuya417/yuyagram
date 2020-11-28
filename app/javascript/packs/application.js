@@ -17,12 +17,15 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import axios from 'axios'
-// import $ from 'jquery'
+import $ from 'jquery'
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   $('.slider-img').on('click', () => {
-//     window.alert('aaaaaaaaaa')
-//   })
-// })
+document.addEventListener('DOMContentLoaded', () => {
+  $('.article-new-account-img').on('click', () => {
+    axios.get('/')
+      .then((response) => {
+        console.log(response)
+      })
+  })
+})
 
 

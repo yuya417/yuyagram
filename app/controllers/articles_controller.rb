@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
   
   def new
     @article = current_user.articles.build
+    @article.profile_id = current_user.id
   end
 
   def create

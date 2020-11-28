@@ -1,10 +1,24 @@
 .container
   .article-new
     = form_with(model: @article, url: articles_path, method: 'post', local:true ) do |f|
-      %div
-        = f.text_area :content
-      %div
-        = f.file_field :images, multiple: true
-      = f.submit 'Post'
-        
+      .article-new-header
+        .article-new-header-cancel
+          = link_to 'Cancel', root_path
+        .article-new-header-title
+          %p 
+            Status
+        .article-new-header-post
+          = f.submit 'Post'
+      .article-new-account
+        .article-new-account-img
+          = image_tag @article.author_img
+        .article-new-account-name
+          = @article.author_name
+      .article-new-account-content
+        = f.text_area :content, :placeholder => "What's on your mind ?"
+      .article-new-account-images
+        .article-new-account-images-label
+          = f.label :images, '+ Album'
+        .article-new-account-images-form
+          = f.file_field :images, multiple: true
 

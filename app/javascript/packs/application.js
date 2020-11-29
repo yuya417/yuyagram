@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .then((response) => {
         const hasLiked = response.data.hasLiked
         handleHeartDisplay(hasLiked)
-        console.log(hasLiked)
       })
       
     })

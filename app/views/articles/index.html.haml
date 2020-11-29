@@ -22,7 +22,7 @@
         - if user_signed_in?
           .active-heart.hidden{id: "#{article.id}"}
             = image_tag 'active_like.png'
-          .inactive-heart.hidden{id: "#{article.id}"}
+          .inactive-heart{id: "#{article.id}"}
             = image_tag 'like.png'
           .article-btn-comment
             = image_tag 'comment.png'

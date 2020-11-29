@@ -25,9 +25,10 @@ axios.defaults.headers.common[ 'X-CSRF-Token' ] = csrfToken()
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  $('.inactive-heart').removeClass('hidden')
+  
   $('.inactive-heart').on('click', function () {
     const id = $(this).attr('id')
+    debugger
 
     const handleHeartDisplay = (hasLiked) => {
       if (hasLiked) {

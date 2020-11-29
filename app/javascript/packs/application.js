@@ -18,19 +18,63 @@ require("channels")
 
 import axios from 'axios'
 import $ from 'jquery'
+import { csrfToken } from 'rails-ujs'
+
+axios.defaults.headers.common[ 'X-CSRF-Token' ] = csrfToken()
+
+
+const handleHeartDisplay = (hasLiked) => {
+  if (hasLiked) {
+    $('.inactive-heart').removeClass('hidden')
+  } else {
+    $('.active-heart').removeClass('hidden')
+  }
+}
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
-  const dataset = $('#article-show').data()
-  const articleId = dataset.articleId
-  axios.get(`/articles/${articleId}/like`)
-    .then((response) => {
-      const hasLiked = response.data.hasLiked
-      if (hasLiked) {
-        $('.active-heart').removeClass('hidden')
-      } else {
-        $('.inactive-heart').removeClass('hidden')
-      }
-    })
+  
+  $('.inactive-heart').removeClass('hidden')
+  $('.inactive-heart').on('click', function () {
+    const id = $(this).attr('id')
+    
+    axios.get(`/articles/${id}/like`)
+      .then((response) => {
+        const hasLiked = response.data.hasLiked
+        handleHeartDisplay(hasLiked)
+      })
+
+    axios.post(`/articles/${id}/like`)
+      .then((response) => {
+        if (response.data.status === 'ok') {
+          $('.active-heart').removeClass('hidden')
+          $('.inactive-heart').addClass('hidden')
+        }
+      })
+      .catch((e) => {
+        window.alert('Error')
+        console.log(e)
+      })
+  })
+  
+  $('.active-heart').on('click', function () {
+    const id = $(this).attr('id')
+    
+    axios.delete(`/articles/${id}/like`)
+      .then((response) => {
+        if (response.data.status === 'ok') {
+          $('.active-heart').addClass('hidden')
+          $('.inactive-heart').removeClass('hidden')
+        }
+      })
+      .catch((e) => {
+        window.alert('Error')
+        console.log(e)
+      })
+  })
+
 })
 
 

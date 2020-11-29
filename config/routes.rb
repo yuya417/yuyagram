@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
 
   root to: 'articles#index'
+  
   resources :articles, only: [:new, :create] do
     resource :like, only: [:show, :create, :destroy]
   end
+  
 
   resource :profile, only: [:show, :edit, :update]
 

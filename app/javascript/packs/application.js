@@ -33,15 +33,33 @@ const handleHeartDisplay = (hasLiked) => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const dataset = $('#article-show').data()
-  const articleId = dataset.articleId
+  $('.cards').each( function (index, card) {
+    console.log($(card.children))
+    $(card.children).each( function (index, child) {
+      var id = $(child).attr('data-article-id')
+      const handleHeartDisplay = (hasLiked) => {
+        if (hasLiked) {
+          $(`#${id}.active-heart`).removeClass('hidden')
+        } else {
+          $(`#${id}.inactive-heart`).removeClass('hidden')
+        }
+      }
 
-  axios.get(`/articles/${articleId}/like`)
-  .then((response) => {
-    const hasLiked = response.data.hasLiked
-    handleHeartDisplay(hasLiked)
-    debugger
+      axios.get(`/articles/${id}/like`)
+      .then((response) => {
+        const hasLiked = response.data.hasLiked
+        handleHeartDisplay(hasLiked)
+        console.log(hasLiked)
+      })
+      
+    })
+    
   })
+
+  // const dataset = $('#article-show').data()
+  // const articleId = dataset.articleId
+
+  
 
 
 

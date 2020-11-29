@@ -1,35 +1,35 @@
 = link_to 'プロフィール', profile_path
 = link_to 'Articles New', new_article_path
 %br
-
-- @articles.each do |article|
-  .card#article-show{data: {article_id: article.id}}
-    .card-account
-      .card-account-icon
-        - if article.author_img.attached?
-          = image_tag article.author_img
-      .card-account-info
-        .card-account-info-name
-          = article.author_name
-        .card-account-info-posttime
-          = time_ago_in_words(article.created_at)
-    .article
-      .article-images
-        - if article.images.attached?
-          - article.images.each do |image|
-            = image_tag image
-      .article-btn
-        - if user_signed_in?
-          .active-heart.hidden{id: "#{article.id}"}
-            = image_tag 'active_like.png'
-          .inactive-heart.hidden{id: "#{article.id}"}
-            = image_tag 'like.png'
-          .article-btn-comment
-            = image_tag 'comment.png'
-          .article-btn-share
-            %a{"data-show-count" => "false", :href => "https://twitter.com/share?ref_src=twsrc%5Etfw"}
-              = image_tag 'share.png'
-          %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
-      .article-content
-        = article.content
+.cards
+  - @articles.each do |article|
+    .card#article-show{data: {article_id: article.id}, class: article.id}
+      .card-account
+        .card-account-icon
+          - if article.author_img.attached?
+            = image_tag article.author_img
+        .card-account-info
+          .card-account-info-name
+            = article.author_name
+          .card-account-info-posttime
+            = time_ago_in_words(article.created_at)
+      .article
+        .article-images
+          - if article.images.attached?
+            - article.images.each do |image|
+              = image_tag image
+        .article-btn
+          - if user_signed_in?
+            .active-heart.hidden{id: "#{article.id}"}
+              = image_tag 'active_like.png'
+            .inactive-heart.hidden{id: "#{article.id}"}
+              = image_tag 'like.png'
+            .article-btn-comment
+              = image_tag 'comment.png'
+            .article-btn-share
+              %a{"data-show-count" => "false", :href => "https://twitter.com/share?ref_src=twsrc%5Etfw"}
+                = image_tag 'share.png'
+            %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
+        .article-content
+          = article.content
 

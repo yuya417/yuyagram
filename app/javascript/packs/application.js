@@ -23,26 +23,30 @@ import { csrfToken } from 'rails-ujs'
 axios.defaults.headers.common[ 'X-CSRF-Token' ] = csrfToken()
 
 
+const handleHeartDisplay = (hasLiked) => {
+  if (hasLiked) {
+    $('.active-heart').removeClass('hidden')
+  } else {
+    $('.inactive-heart').removeClass('hidden')
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+
+  const dataset = $('#article-show').data()
+  const articleId = dataset.articleId
+
+  axios.get(`/articles/${articleId}/like`)
+  .then((response) => {
+    const hasLiked = response.data.hasLiked
+    handleHeartDisplay(hasLiked)
+    debugger
+  })
+
+
+
   $('.inactive-heart').on('click', function () {
     const id = $(this).attr('id')
-    debugger
-
-    const handleHeartDisplay = (hasLiked) => {
-      if (hasLiked) {
-        $(`#${id}.active-heart`).removeClass('hidden')
-      } else {
-        $(`#${id}.inactive-heart`).removeClass('hidden')
-      }
-    }
-    
-    axios.get(`/articles/${id}/like`)
-      .then((response) => {
-        const hasLiked = response.data.hasLiked
-        handleHeartDisplay(hasLiked)
-      })
 
     axios.post(`/articles/${id}/like`)
       .then((response) => {

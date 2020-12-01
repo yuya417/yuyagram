@@ -3,7 +3,6 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all.order("id DESC")
-
   end
   
   def new
@@ -22,6 +21,11 @@ class ArticlesController < ApplicationController
       flash.now[:error] = '保存できませんでした'
       render :new
     end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy!
   end
 
 

@@ -33,6 +33,7 @@ const handleHeartDisplay = (hasLiked) => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // いいね機能
   $('.cards').each( function (index, card) {
     console.log($(card.children))
     $(card.children).each( function (index, child) {
@@ -54,13 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     
   })
-
-  // const dataset = $('#article-show').data()
-  // const articleId = dataset.articleId
-
-  
-
-
 
   $('.inactive-heart').on('click', function () {
     const id = $(this).attr('id')
@@ -94,6 +88,17 @@ document.addEventListener('DOMContentLoaded', () => {
       })
   })
 
+  // コメント機能
+  // $('.article-btn-comment').on('click', function() {
+  //   const articleId = $(this).attr('id')
+    
+  //   axios.get(`/articles/${articleId}/comments`)
+  //     .then((response) => {
+
+  //     })
+
+  // })
+  
 })
 
 

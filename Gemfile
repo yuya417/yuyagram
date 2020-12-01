@@ -30,6 +30,7 @@ gem 'hamlit'
 gem 'font-awesome-sass'
 gem 'sidekiq'
 gem 'carrierwave'
+gem 'active_model_serializers'
 
 
 # Reduces boot times through caching; required in config/boot.rb

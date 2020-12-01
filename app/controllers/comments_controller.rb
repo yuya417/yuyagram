@@ -1,16 +1,11 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :create, :destroy]
 
   def index
     article = Article.find(params[:article_id])
     @comments = article.comments
     @comment = article.comments.build
   end
-
-  # def new
-  #   article = Article.find(params[:article_id])
-  #   @comment = article.comments.build
-  # end
 
   def create
     article = Article.find(params[:article_id])

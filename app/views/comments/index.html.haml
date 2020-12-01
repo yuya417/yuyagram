@@ -8,18 +8,17 @@
       - @comments.each do |comment|
         .comment-card
           .comment-user-img
-            = image_tag comment.user.profile.image
+            -# = image_tag comment.user.profile.image
           .comment-user
             .comment-user-name
-              = comment.user.account_name
+              -# = comment.user.account_name
             .comment-user-content
               = comment.content
-              %br
-    .add-comment
-      = form_with(model: @comment, url: article_comments_path(@comment.article), local: true) do |f|
-        .comment-area
-          .comment-submit-btn
-            = button_tag type: :submit do
-              = image_tag "comment.png"
-          .comment-text-area
-            = f.text_area :content
+    -# .add-comment
+    -#   = form_with(model: @comment, url: article_comments_path(@comment.article), local: true) do |f|
+    -#     .comment-area
+    -#       .comment-submit-btn
+    -#         = button_tag type: :submit do
+    -#           = image_tag "comment.png"
+    -#       .comment-text-area
+    -#         = f.text_area :content

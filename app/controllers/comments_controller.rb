@@ -5,13 +5,16 @@ class CommentsController < ApplicationController
     article = Article.find(params[:article_id])
     @comments = article.comments
     @comment = article.comments.build
+
+    render json: @comments
   end
 
   def create
     article = Article.find(params[:article_id])
     @comment = article.comments.build(comment_params)
     @comment.save!
-    redirect_to article_comments_path(article)
+    
+    render json: @comment
   end
 
   def destroy

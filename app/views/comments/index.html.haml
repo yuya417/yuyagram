@@ -14,11 +14,11 @@
               -# = comment.user.account_name
             .comment-user-content
               = comment.content
-    -# .add-comment
-    -#   = form_with(model: @comment, url: article_comments_path(@comment.article), local: true) do |f|
-    -#     .comment-area
-    -#       .comment-submit-btn
-    -#         = button_tag type: :submit do
-    -#           = image_tag "comment.png"
-    -#       .comment-text-area
-    -#         = f.text_area :content
+    .add-comment
+      = form_with(model: @comment, url: article_comments_path(@comment.article), method: 'post', local: true) do |f|
+        .comment-area
+          .comment-submit-btn
+            = button_tag type: :submit do
+              = image_tag "comment.png"
+          .comment-text-area
+            = f.text_area :content

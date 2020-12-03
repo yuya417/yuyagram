@@ -33,8 +33,9 @@ const handleHeartDisplay = (hasLiked) => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // いいね機能
+  
   $('.cards').each( function (index, card) {
+    // いいね機能
     console.log($(card.children))
     $(card.children).each( function (index, child) {
       var id = $(child).attr('data-article-id')
@@ -47,10 +48,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       axios.get(`/articles/${id}/like`)
-      .then((response) => {
-        const hasLiked = response.data.hasLiked
-        handleHeartDisplay(hasLiked)
-      })
+        .then((response) => {
+          const hasLiked = response.data.hasLiked
+          handleHeartDisplay(hasLiked)
+        })
+
+      // コメント表示
+      axios.get(`articles/${id}/comments`)
+        .then((response) => {
+          debugger
+          const comments = response.data
+
+        })
       
     })
     
@@ -89,15 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   // コメント機能
-  // $('.article-btn-comment').on('click', function() {
-  //   const articleId = $(this).attr('id')
-    
-  //   axios.get(`/articles/${articleId}/comments`)
-  //     .then((response) => {
-
-  //     })
-
-  // })
+  
   
 })
 

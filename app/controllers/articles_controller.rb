@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all.order("id DESC")
+    @user = current_user
   end
 
   def show

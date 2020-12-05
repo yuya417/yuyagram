@@ -3,7 +3,9 @@
     .comment-header
       %p 
         Comment
-    %i.fas.fa-arrow-left.fa-2x
+    .comment-header-back-image
+      = link_to root_path do
+        %i.fas.fa-arrow-left.fa-2x
     .comments-container{id: "#{@article.id}"}
   .add-comment
     .comment-area

@@ -1,5 +1,12 @@
-= link_to 'プロフィール', profile_path
-= link_to 'Articles New', new_article_path
+.articles-header
+  .articles-post-article
+    = link_to  new_article_path do
+      = image_tag 'create.png'
+  .articles-header-title
+    Yuyagram
+  .articles-user-image
+    = link_to profile_path do
+      = image_tag @user.author_image
 
 %br
 .cards
@@ -28,8 +35,7 @@
               = link_to article_path(id: article.id) do
                 = image_tag 'comment.png'
             .article-btn-share
-              %a{"data-show-count" => "false", :href => "https://twitter.com/share?ref_src=twsrc%5Etfw"}
-                = image_tag 'share.png'
+              = link_to image_tag('share.png'), "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank'
             %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
         .article-content
           = article.content

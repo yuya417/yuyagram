@@ -43,6 +43,8 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rubocop-rails'
+  gem 'letter_opener'
+  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :development do

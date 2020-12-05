@@ -11,9 +11,9 @@
           = f.submit 'Post'
       .article-new-account
         .article-new-account-img
-          = image_tag @article.author_img
+          = image_tag @article.user.author_image
         .article-new-account-name
-          = @article.author_name
+          = @article.user.account_name
       .article-new-account-content
         = f.text_area :content, :placeholder => "What's on your mind ?"
       .article-new-account-images

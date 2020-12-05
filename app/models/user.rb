@@ -9,10 +9,23 @@ class User < ApplicationRecord
 
   has_many :articles, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 
   def has_liked?(article)
     likes.exists?(article_id: article.id)
+  end
+
+  def prepare_profile
+    profile || build_profile
+  end
+
+  def author_image
+    if profile&.image&.attached?
+      profile.image
+    else
+      'Ellipse.png'
+    end
   end
 
 end

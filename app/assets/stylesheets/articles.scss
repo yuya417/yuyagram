@@ -1,3 +1,26 @@
+.articles-header {
+  margin-top: 20px;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+  display: flex;
+  justify-content: space-between;
+  .articles-post-article {
+    img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+  .articles-header-title {
+    font-family: fantasy, sans-serif;
+  }
+  .articles-user-image {
+    img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+  }
+}
 .card {
   margin-top: 46px;
   margin-bottom: 56px;
@@ -10,8 +33,8 @@
       margin-right: 8px;
       img {
         margin-top: 5px;
-        width: 30px;
-        height: 30px;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
       }
     }

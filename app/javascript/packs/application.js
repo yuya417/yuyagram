@@ -31,8 +31,23 @@ const handleHeartDisplay = (hasLiked) => {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+const appendNewComment = (comment) => {
+  $('.comments-container').append(
+    `<div class="comment-card">
+      <div class="comment-user-img"><img src="${comment.user.author_image}"></div>
+      <div class="comment-user-info">
+        <div class="comment-user-name"><p>${comment.user.account_name}</p></div>
+        <div class="comment-user-content"><p>${comment.content}</p></div>
+      </div>
+    </div>`
+  )
+}
 
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // いいね機能
   $('.cards').each( function (index, card) {
     console.log($(card.children))
     $(card.children).each( function (index, child) {
@@ -44,23 +59,26 @@ document.addEventListener('DOMContentLoaded', () => {
           $(`#${id}.inactive-heart`).removeClass('hidden')
         }
       }
-
       axios.get(`/articles/${id}/like`)
-      .then((response) => {
-        const hasLiked = response.data.hasLiked
-        handleHeartDisplay(hasLiked)
+        .then((response) => {
+          const hasLiked = response.data.hasLiked
+          handleHeartDisplay(hasLiked)
+        })
+
+      axios.get(`/articles/${id}/comments`)
+        .then((response) => {
+          const comments = response.data
+          comments.forEach((comment) => {
+            appendNewComment(comment)
+          })
+        })
+
       })
+
       
+
     })
     
-  })
-
-  // const dataset = $('#article-show').data()
-  // const articleId = dataset.articleId
-
-  
-
-
 
   $('.inactive-heart').on('click', function () {
     const id = $(this).attr('id')
@@ -77,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(e)
       })
   })
+
   
   $('.active-heart').on('click', function () {
     const id = $(this).attr('id')
@@ -93,7 +112,38 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(e)
       })
   })
+  
+  
+  
+  
+  // コメント機能
+  const id = $('.comments-container').attr('id') || $('.article-btn-comment').attr('id')
+  // commentsリクエストのidがundifindになるエラーの対応
+  if (typeof id !== 'undefined') {
+    axios.get(`/articles/${id}/comments`)
+      .then((response) => {
+        const comments = response.data
+        comments.forEach((comment) => {
+          appendNewComment(comment)
+        })
+      })
+  }
+  
+  $('.comment-submit-btn').on('click', function() {
+    const content = $('#comment_content').val()
+    if (!content) {
+      window.alert('コメントを入力してください')
+    } else {
+      axios.post(`/articles/${id}/comments`, {
+        comment: {content: content}
+      })
+        .then((res) => {
+          const comment = res.data
+          appendNewComment(comment)
+          $('#comment_content').val('')
+        })
+    }
+  })
 
 })
-
 

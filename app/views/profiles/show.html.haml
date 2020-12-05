@@ -1,6 +1,8 @@
 .container
   .profile 
-    = icon("fas", "arrow-left fa-2x")
+    .comment-header-back-image
+      = link_to root_path do
+        %i.fas.fa-arrow-left.fa-2x
     .account-name
       %p= @user.account_name
     .profile-img

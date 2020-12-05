@@ -118,14 +118,16 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // コメント機能
   const id = $('.comments-container').attr('id') || $('.article-btn-comment').attr('id')
-
-  axios.get(`/articles/${id}/comments`)
-    .then((response) => {
-      const comments = response.data
-      comments.forEach((comment) => {
-        appendNewComment(comment)
+  // commentsリクエストのidがundifindになるエラーの対応
+  if (typeof id !== 'undefined') {
+    axios.get(`/articles/${id}/comments`)
+      .then((response) => {
+        const comments = response.data
+        comments.forEach((comment) => {
+          appendNewComment(comment)
+        })
       })
-    })
+  }
   
   $('.comment-submit-btn').on('click', function() {
     const content = $('#comment_content').val()

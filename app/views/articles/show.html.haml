@@ -1,0 +1,14 @@
+.container
+  .comments
+    .comment-header
+      %p 
+        Comment
+    %i.fas.fa-arrow-left.fa-2x
+    .comments-container{id: "#{@article.id}"}
+  .add-comment
+    .comment-area
+      .comment-submit-btn
+        = button_tag type: :submit do
+          = image_tag "comment.png"
+      .comment-text-area
+        = text_area_tag :comment_content, '', class:'sm'

@@ -1,22 +1,82 @@
 .profile {
   margin-top: 20px;
-}
+  .follow-btn {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    margin: 0;
+    font-size: 13px;
+    line-height: 24px;
+    border: 1px solid #000000;
+    padding: 3px 7px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #fff;
+    text-decoration: none;
+    p {
+      color: #000;
+      margin: 0;
+    }
+  }
+  .follow-btn:hover {
+    color: #fff;
+    background: #000;
+    p {
+      color: #fff;
+    }
+  }
 
-i {
-  position: absolute;
-  top: 20px;
-}
+  .unfollow-btn {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    margin: 0;
+    font-size: 13px;
+    line-height: 24px;
+    border: 1px solid #000000;
+    padding: 3px 7px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    p {
+      color: #fff;
+      margin: 0;
+    }
+  }
+  .unfollow-btn:hover {
+    color: #000;
+    background: #fff;
+    p {
+      color: #000;
+    }
+  }
+  
+  
+  .hidden {
+    display: none;
+  }
 
-.account-name {
-  text-align: center;
-}
+  i {
+    position: absolute;
+    top: 20px;
+  }
 
-.profile-img {
-  margin-top: 35px;
-  text-align: center;
-  img {
-    width: 76.88px;
-    height: 76.88px;
-    border-radius: 50%;
+  .account-name {
+    text-align: center;
+    p {
+      margin: 0;
+    }
+  }
+  
+  .profile-img {
+    margin-top: 35px;
+    text-align: center;
+    img {
+      width: 76.88px;
+      height: 76.88px;
+      border-radius: 50%;
+    }
   }
 }

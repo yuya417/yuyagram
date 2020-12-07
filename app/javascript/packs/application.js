@@ -145,5 +145,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
+
+  // フォロー機能
+  const accountId = $('.profile').data('id')
+  const myId = $('.container').data('id')
+  if (typeof (accountId && myId) !== 'undefined') {
+    axios.get(`/accounts/${accountId}/follows/${myId}`)
+      .then((response) => {
+        if( response.data.followStatus === true) {
+          $('.unfollow-btn').removeClass('hidden')
+        } else {
+          $('.follow-btn').removeClass('hidden')
+        }
+      })
+  }
+
+  $('.follow-btn').on('click', function () {
+    const accountId = $(this).attr('id')
+    axios.post(`/accounts/${accountId}/follows`)
+      .then((response) => {
+        if(response.data.status === 'ok') {
+          $('.follow-btn').addClass('hidden')
+          $('.unfollow-btn').removeClass('hidden')
+        } else {
+          $('.follow-btn').removeClass('hidden')
+          $('.unfollow-btn').addClass('hidden')
+        }
+      })
+      .catch((e) => {
+        window.alert('Error')
+        console.log(e)
+      })
+  })
+
+  // アンフォロー機能
+  
+
+
+
 })
 

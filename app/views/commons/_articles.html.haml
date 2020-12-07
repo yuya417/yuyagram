@@ -1,14 +1,3 @@
-.articles-header
-  .articles-post-article
-    = link_to  new_article_path do
-      = image_tag 'create.png'
-  .articles-header-title
-    Yuyagram
-  .articles-user-image
-    = link_to edit_profile_path do
-      = image_tag @user.author_image
-
-%br
 .cards
   - @articles.each do |article|
     .card#article-show{data: {article_id: article.id}, class: article.id}
@@ -40,4 +29,3 @@
         .article-content
           = article.content
         = link_to '削除', article_path(article), data: { method: 'delete'}
-

@@ -1,0 +1,32 @@
+.followers {
+  margin-top: 20px;
+  .followers-header {
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+.follower-list {
+  margin-top: 50px;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+  .followers-card {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #EEEEEE;
+    display: flex;
+    .followers-profile-img {
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+    }
+    .followers-profile-name {
+      font-size: 14px;
+      line-height: 21px;
+      color: #333333;
+    }
+  }
+}

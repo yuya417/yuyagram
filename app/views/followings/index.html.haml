@@ -1,0 +1,15 @@
+.container
+  .followings
+    .followings-header
+      %p Followings
+    .followings-header-back-image
+      = link_to account_path(@user) do
+        %i.fas.fa-arrow-left.fa-2x
+  .followings-list
+    - @followings.each do |following|
+      .followings-card
+        = link_to account_path(following) do
+          .followings-profile-img
+            = image_tag following.author_image
+        .followings-profile-name
+          = following.account_name

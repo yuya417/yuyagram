@@ -179,7 +179,34 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   // アンフォロー機能
-  
+  if (typeof (accountId && myId) !== 'undefined') {
+    axios.get(`/accounts/${accountId}/unfollows/${myId}`)
+      .then((response) => {
+        if( response.data.followStatus === true) {
+          $('.unfollow-btn').removeClass('hidden')
+        } else {
+          $('.follow-btn').removeClass('hidden')
+        }
+      })
+  }
+
+  $('.unfollow-btn').on('click', function () {
+    const accountId = $(this).attr('id')
+    axios.post(`/accounts/${accountId}/unfollows`)
+      .then((response) => {
+        if(response.data.status === 'ok') {
+          $('.follow-btn').removeClass('hidden')
+          $('.unfollow-btn').addClass('hidden')
+        } else {
+          $('.follow-btn').addClass('hidden')
+          $('.unfollow-btn').removeClass('hidden')
+        }
+      })
+      .catch((e) => {
+        window.alert('Error')
+        console.log(e)
+      })
+  })
 
 
 

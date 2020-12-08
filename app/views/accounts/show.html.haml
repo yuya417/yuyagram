@@ -15,4 +15,6 @@
       - else 
         = image_tag 'Ellipse.png'
   = link_to 'LOGOUT', destroy_user_session_path, data: {method: 'delete'}
+  = render 'commons/counting'
   = render 'commons/articles'
+  

@@ -1,0 +1,14 @@
+.counting
+  .counting-posts
+    .counting-posts-num
+      = @post_counts
+    %p Posts
+  .counting-followers
+    .counting-followers-num
+      = @follower_counts
+    = link_to account_followers_path(@user) do
+      %p Followers
+  .counting-followings
+    .counting-followings-num
+      = @following_counts
+    %p Followings

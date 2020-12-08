@@ -1,0 +1,15 @@
+.container
+  .followers
+    .followers-header
+      %p Followers
+    .followers-header-back-image
+      = link_to account_path(@user) do
+        %i.fas.fa-arrow-left.fa-2x
+  .follower-list
+    - @followers.each do |follower|
+      .followers-card
+        = link_to account_path(follower) do
+          .followers-profile-img
+            = image_tag follower.author_image
+        .followers-profile-name
+          = follower.account_name

@@ -1,16 +1,13 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
-  # def show
-  #   article = Article.find(params[:article_id])
-  #   @user = article.user
-  #   @profile = @user.profile
-  # end
-
   def edit
     @user = current_user
     @profile = current_user.prepare_profile
     @articles = @user.articles
+    @post_counts = @user.post_counts(@user)
+    @follower_counts = @user.follower_counts(@user)
+    @following_counts = @user.following_counts(@user)
   end
 
   def update

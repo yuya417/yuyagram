@@ -80,3 +80,17 @@
     }
   }
 }
+
+.profile-user-articles {
+  margin-top: 40px;
+  margin-right: 5%;
+  margin-left: 5%;
+  .profile-user-articles-images {
+    justify-content: center;
+    flex-wrap: wrap;
+    img {
+      width: 32%;
+      height: 33%;
+    }
+  }
+}

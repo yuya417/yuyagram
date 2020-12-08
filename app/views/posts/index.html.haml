@@ -1,0 +1,8 @@
+.container
+  .posts
+    .posts-header
+      %p Posts
+    .posts-header-back-image
+      = link_to account_path(@user) do
+        %i.fas.fa-arrow-left.fa-2x
+= render 'commons/articles'

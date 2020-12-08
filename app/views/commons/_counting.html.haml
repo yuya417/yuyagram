@@ -2,7 +2,8 @@
   .counting-posts
     .counting-posts-num
       = @post_counts
-    %p Posts
+    = link_to account_posts_path(@user) do
+      %p Posts
   .counting-followers
     .counting-followers-num
       = @follower_counts
@@ -11,4 +12,5 @@
   .counting-followings
     .counting-followings-num
       = @following_counts
-    %p Followings
+    = link_to account_followings_path(@user) do
+      %p Followings

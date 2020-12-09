@@ -16,7 +16,7 @@ RSpec.describe Article, type: :model do
     before do
       article.save
     end
-    it '記事が保存できない' do
+    it '記事を保存できない' do
       expect(article.errors.messages[:content][0]).to eq("can't be blank")
     end
   end

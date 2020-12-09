@@ -1,0 +1,16 @@
+.nav-bar
+  .create-article-nav
+    = link_to  new_article_path do
+      = image_tag 'create.png'
+  .article-nav
+    = link_to root_path do
+      %p Articles
+  .timeline-nav
+    = link_to timeline_path do
+      %p Timeline
+  .myuser-nav
+    = link_to edit_profile_path do
+      - if current_user.profile
+        = image_tag @user.author_image
+      - else 
+        = image_tag 'Ellipse.png'

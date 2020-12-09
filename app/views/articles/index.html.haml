@@ -6,9 +6,10 @@
     Yuyagram
   .articles-user-image
     = link_to edit_profile_path do
-      = image_tag @user.author_image
-
-%br
+      - if current_user.profile
+        = image_tag @user.author_image
+      - else
+        = image_tag 'Ellipse.png'
 .cards
   - @articles.each do |article|
     .card#article-show{data: {article_id: article.id}, class: article.id}
@@ -40,4 +41,4 @@
         .article-content
           = article.content
         = link_to '削除', article_path(article), data: { method: 'delete'}
-
+= render 'commons/nav-var'

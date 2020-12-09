@@ -86,11 +86,11 @@
   margin-right: 5%;
   margin-left: 5%;
   .profile-user-articles-images {
+    width: 100%;
     justify-content: center;
     flex-wrap: wrap;
     img {
-      width: 32%;
-      height: 33%;
+      width: calc(96% / 3);
     }
   }
 }

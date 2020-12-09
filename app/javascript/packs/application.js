@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
   $('.comment-submit-btn').on('click', function() {
     const content = $('#comment_content').val()
     if (!content) {
-      window.alert('コメントを入力してください')
+      window.alert('Please enter a comment')
     } else {
       axios.post(`/articles/${id}/comments`, {
         comment: {content: content}

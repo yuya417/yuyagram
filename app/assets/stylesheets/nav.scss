@@ -1,0 +1,46 @@
+.nav-bar {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  background-color: #c7bfa1;
+  justify-content: space-around;
+  height: 50px;
+  .create-article-nav {
+    a {
+      img {
+        margin-top: 10px;
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+  .article-nav {
+    a {
+      text-decoration: none;
+      color: #000;
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+  .timeline-nav {
+    a {
+      text-decoration: none;
+      color: #000;
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+  .myuser-nav {
+    a {
+      img {
+        margin-top: 10px;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}

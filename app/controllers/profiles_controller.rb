@@ -1,10 +1,16 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
+  def show
+    @user = current_user
+    @profile = current_user.prepare_profile
+    @articles = @user.articles.order("id DESC")
+  end
+
   def edit
     @user = current_user
     @profile = current_user.prepare_profile
-    @articles = @user.articles
+    @articles = @user.articles.order("id DESC")
     @post_counts = @user.post_counts(@user)
     @follower_counts = @user.follower_counts(@user)
     @following_counts = @user.following_counts(@user)

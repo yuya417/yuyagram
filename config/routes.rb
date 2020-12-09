@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   
   root to: 'articles#index'
+  resource :timeline, only: [:show]
 
   resources :articles do
     resource :like, only: [:show, :create, :destroy]
@@ -22,6 +23,6 @@ Rails.application.routes.draw do
   end
   
 
-  resource :profile, only: [:edit, :update]
+  resource :profile, only: [:show, :edit, :update]
 
 end

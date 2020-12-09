@@ -22,11 +22,10 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.build(article_params)
     @article.profile_id = current_user.id
     @profile = current_user.profile
-    @article.profile = @profile
     if @article.save!
-      redirect_to root_path, notice: '保存しました！'
+      redirect_to root_path, notice: 'Saved!'
     else
-      flash.now[:error] = '保存できませんでした'
+      flash.now[:error] = 'Could not be saved'
       render :new
     end
   end

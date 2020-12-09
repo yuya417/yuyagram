@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
+  validates :content, presence: true
+
   belongs_to :user
-  belongs_to :profile
 
   has_many_attached :images
 

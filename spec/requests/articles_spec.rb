@@ -22,6 +22,9 @@ RSpec.describe 'Articles', type: :request do
         article_params = attributes_for(:article)
         post articles_path({article: article_params})
         expect(response).to have_http_status(302)
+
+        puts article_params[:content]
+        puts Article.last.content
         expect(Article.last.content).to eq(article_params[:content])
       end
     end

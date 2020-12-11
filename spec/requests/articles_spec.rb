@@ -5,6 +5,7 @@ RSpec.describe 'Articles', type: :request do
   let!(:articles) { create_list(:article, 5, user: user) }
   
   describe 'GET /articles' do
+
     context 'ログインしている場合' do
       before do
         sign_in user
@@ -15,10 +16,13 @@ RSpec.describe 'Articles', type: :request do
       end
     end
 
-    it 'ログイン画面に遷移する' do
-      get articles_path
-      expect(response).to redirect_to(new_user_session_path)
+    context 'ログインしていない場合' do
+      it 'ログイン画面に遷移する' do
+        get articles_path
+        expect(response).to redirect_to(new_user_session_path)
+      end
     end
+    
   end
 
 

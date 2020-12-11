@@ -10,7 +10,7 @@
       %p Timeline
   .myuser-nav
     = link_to edit_profile_path do
-      - if current_user.profile
+      - if @user.profile
         = image_tag @user.author_image
       - else 
         = image_tag 'Ellipse.png'

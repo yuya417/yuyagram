@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   end
   
 
-  resource :profile, only: [:show, :edit, :update]
+  resource :profile, only: [:edit, :update]
 
 end

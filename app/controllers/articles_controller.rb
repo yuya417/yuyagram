@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :new, :create]
-  before_action :set_profile
 
   def index
     @articles = Article.all.order("id DESC")
@@ -39,14 +38,6 @@ class ArticlesController < ApplicationController
   private
   def article_params
     params.require(:article).permit(:content, images: [])
-  end
-
-  def set_profile
-    if current_user.profile.present?
-      @profile = current_user.profile
-    else
-      redirect_to profile_path
-    end
   end
 
 end

@@ -16,15 +16,15 @@ RSpec.describe 'Articles', type: :request do
     context 'ログインしている場合' do
       before do
         sign_in user
+        @article = FactoryBot.build(:article)
+        @article.images = fixture_file_upload('app/assets/images/Ellipse.png')
       end
 
       it '記事が保存される' do
         article_params = attributes_for(:article)
         post articles_path({article: article_params})
+      
         expect(response).to have_http_status(302)
-
-        puts article_params[:content]
-        puts Article.last.content
         expect(Article.last.content).to eq(article_params[:content])
       end
     end

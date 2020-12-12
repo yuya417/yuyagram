@@ -1,12 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
-  # def show
-  #   @user = current_user
-  #   @profile = current_user.prepare_profile
-  #   @articles = @user.articles.order("id DESC")
-  # end
-
   def edit
     @user = current_user
     @profile = current_user.prepare_profile

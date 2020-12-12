@@ -59,13 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
           $(`#${id}.inactive-heart`).removeClass('hidden')
         }
       }
-      axios.get(`/articles/${id}/like`)
+      
+      axios.get(`/api/articles/${id}/like`)
         .then((response) => {
           const hasLiked = response.data.hasLiked
           handleHeartDisplay(hasLiked)
         })
 
-      axios.get(`/articles/${id}/comments`)
+      axios.get(`/api/articles/${id}/comments`)
         .then((response) => {
           const comments = response.data
           comments.forEach((comment) => {
@@ -73,17 +74,15 @@ document.addEventListener('DOMContentLoaded', () => {
           })
         })
 
-      })
-
-      
-
     })
+
+  })
     
 
   $('.inactive-heart').on('click', function () {
     const id = $(this).attr('id')
 
-    axios.post(`/articles/${id}/like`)
+    axios.post(`/api/articles/${id}/like`)
       .then((response) => {
         if (response.data.status === 'ok') {
           $(`#${id}.active-heart`).removeClass('hidden')
@@ -100,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   $('.active-heart').on('click', function () {
     const id = $(this).attr('id')
     
-    axios.delete(`/articles/${id}/like`)
+    axios.delete(`/api/articles/${id}/like`)
       .then((response) => {
         if (response.data.status === 'ok') {
           $(`#${id}.active-heart`).addClass('hidden')
@@ -120,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const id = $('.comments-container').attr('id') || $('.article-btn-comment').attr('id')
   // commentsリクエストのidがundifindになるエラーの対応
   if (typeof id !== 'undefined') {
-    axios.get(`/articles/${id}/comments`)
+    axios.get(`/api/articles/${id}/comments`)
       .then((response) => {
         const comments = response.data
         comments.forEach((comment) => {
@@ -134,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!content) {
       window.alert('Please enter a comment')
     } else {
-      axios.post(`/articles/${id}/comments`, {
+      axios.post(`/api/articles/${id}/comments`, {
         comment: {content: content}
       })
         .then((res) => {
@@ -207,8 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(e)
       })
   })
-
-
 
 })
 

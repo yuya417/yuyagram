@@ -3,7 +3,7 @@ class Api::CommentsController < Api::ApplicationController
   def index
     article = Article.find(params[:article_id])
     comments = article.comments
-    render json: comments, include: { user: [ :profile] }
+    render json: comments, include: { user: [:profile] }
   end
 
 

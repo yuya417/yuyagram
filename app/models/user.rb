@@ -67,7 +67,7 @@ class User < ApplicationRecord
 
   def author_image
     if profile&.image&.attached?
-      profile.image
+      profile.image 
     else
       'Ellipse.png'
     end

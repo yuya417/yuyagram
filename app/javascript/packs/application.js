@@ -34,7 +34,9 @@ const handleHeartDisplay = (hasLiked) => {
 const appendNewComment = (comment) => {
   $('.comments-container').append(
     `<div class="comment-card">
-      <div class="comment-user-img"><img src="${comment.user.author_image}"></div>
+      <div class="comment-user-img">
+        <img src="${comment.user.author_image}">
+      </div>
       <div class="comment-user-info">
         <div class="comment-user-name"><p>${comment.user.account_name}</p></div>
         <div class="comment-user-content"><p>${comment.content}</p></div>

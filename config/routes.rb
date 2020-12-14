@@ -7,13 +7,10 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   
   root to: 'articles#index'
+
   resource :timeline, only: [:show]
-
-  resources :articles do
-    resource :like, only: [:show, :create, :destroy]
-    resources :comments, only: [:index, :create, :destroy]
-  end
-
+  resources :articles 
+  
   resources :accounts, only: [:show] do
     resources :posts, only: [:index]
     resources :followers, only: [:index]
@@ -21,8 +18,14 @@ Rails.application.routes.draw do
     resources :follows, only: [:show, :create]
     resources :unfollows, only: [:show, :create]
   end
-  
 
   resource :profile, only: [:edit, :update]
+
+  namespace :api, defaults: { format: :json } do
+    scope '/articles/:article_id' do
+      resource :like, only: [:show, :create, :destroy]
+      resources :comments, only: [:index, :create, :destroy]
+    end
+  end
 
 end

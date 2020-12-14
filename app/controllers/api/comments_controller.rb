@@ -1,10 +1,9 @@
-class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create, :destroy]
+class Api::CommentsController < Api::ApplicationController
   
   def index
     article = Article.find(params[:article_id])
     comments = article.comments
-    render json: comments, include: { user: [ :profile] }
+    render json: comments, include: { user: [:profile] }
   end
 
 

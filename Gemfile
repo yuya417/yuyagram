@@ -33,6 +33,7 @@ gem 'sidekiq'
 gem 'carrierwave'
 gem 'active_model_serializers'
 gem 'aws-sdk-s3', require: false
+gem 'sendgrid-ruby'
 
 
 # Reduces boot times through caching; required in config/boot.rb

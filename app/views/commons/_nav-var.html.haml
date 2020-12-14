@@ -1,15 +1,15 @@
 .nav-bar
   .create-article-nav
-    = link_to  new_article_path do
+    = link_to  new_article_path, class: 'nav-article-new' do
       = image_tag 'create.png'
   .article-nav
-    = link_to root_path do
+    = link_to root_path, class: 'articles-page-link' do
       %p Articles
   .timeline-nav
-    = link_to timeline_path do
+    = link_to timeline_path, class: 'timeline-page-link' do
       %p Timeline
   .myuser-nav
-    = link_to edit_profile_path do
+    = link_to edit_profile_path, class: 'nav-profile-page-link' do
       - if @user&.profile
         = image_tag @user.author_image
       - else 

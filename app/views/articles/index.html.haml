@@ -1,11 +1,11 @@
 .articles-header
   .articles-post-article
-    = link_to  new_article_path do
+    = link_to  new_article_path, class: 'article-new' do
       = image_tag 'create.png'
   .articles-header-title
     Yuyagram
   .articles-user-image
-    = link_to edit_profile_path do
+    = link_to edit_profile_path, class: 'profile-page-link' do
       - if @user&.profile
         = image_tag @user.author_image
       - else
@@ -15,7 +15,7 @@
     .card#article-show{data: {article_id: article.id}, class: article.id}
       .card-account
         .card-account-icon
-          = link_to image_tag(article.user.author_image), account_path(article.user)
+          = link_to image_tag(article.user.author_image), account_path(article.user), class: 'account-page-link'
         .card-account-info
           .card-account-info-name
             = article.user.account_name
@@ -33,12 +33,11 @@
             .inactive-heart.hidden{id: "#{article.id}"}
               = image_tag 'like.png'
             .article-btn-comment{id: "#{article.id}"}
-              = link_to article_path(id: article.id) do
+              = link_to article_path(id: article.id), class: 'comment-page-link' do
                 = image_tag 'comment.png'
             .article-btn-share
               = link_to image_tag('share.png'), "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank'
             %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
         .article-content
           = article.content
-        = link_to '削除', article_path(article), data: { method: 'delete'}
 = render 'commons/nav-var'

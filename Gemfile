@@ -32,6 +32,8 @@ gem 'font-awesome-sass'
 gem 'sidekiq'
 gem 'carrierwave'
 gem 'active_model_serializers'
+gem 'aws-sdk-s3', require: false
+gem 'sendgrid-ruby'
 
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -48,6 +50,7 @@ group :development, :test do
   gem 'letter_opener_web', '~> 1.0'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'dotenv-rails'
 end
 
 group :development do

@@ -1,0 +1,16 @@
+{
+  "name": "yuyagram",
+  "description": "This is instagram",
+  "keywords": [],
+  "website": "",
+  "repository": "https://github.com/yuya417/yuyagram",
+  "env": {},
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "buildpacks": [{
+    "url": "heroku/nodejs"
+  }, {
+    "url": "heroku/ruby"
+  }]
+}
